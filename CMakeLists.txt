@@ -16,7 +16,10 @@ pico_sdk_init()
 
 # Add your source files
 add_executable(${NAME}
-        main.cpp # <-- Add source files here!
+        main.cpp
+        log.cpp
+        graphics.cpp
+        functions.h
 )
 
 # Include required libraries
