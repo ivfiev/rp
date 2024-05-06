@@ -12,12 +12,12 @@ int main() {
     while (true) {
         clear();
 
-        log_msg("ASDF%d\n", i);
+        log_msg("ASDF %d\n", i);
         print_msgs(0);
 
         redraw();
 
-        sleep_ms(1000);
+        sleep_ms(100);
         i++;
     }
 
