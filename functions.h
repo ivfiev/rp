@@ -10,3 +10,5 @@ void clear();
 void redraw();
 
 void set_led(int);
+
+void wifi_scan();
