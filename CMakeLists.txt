@@ -17,6 +17,7 @@ add_executable(${NAME}
         log.cpp
         graphics.cpp
         functions.h
+        wifi.cpp
 )
 
 include(common/pimoroni_i2c)
@@ -27,7 +28,8 @@ include(libraries/pico_explorer/pico_explorer)
 
 target_link_libraries(${NAME}
         pimoroni_i2c
-        pico_explorer # <-- List libraries here!
+        pico_explorer
+        pico_cyw43_arch_none
 )
 
 pico_add_extra_outputs(${NAME})

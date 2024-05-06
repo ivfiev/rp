@@ -8,3 +8,5 @@ void print_msgs(uint offset);
 
 void clear();
 void redraw();
+
+void set_led(int);
