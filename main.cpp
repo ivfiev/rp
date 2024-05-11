@@ -15,21 +15,25 @@ int main() {
 
     int i = 0;
 
-    wifi_scan();
+    dht_reading dr;
 
-//    while (true) {
-//        clear();
-//
-//        log_msg("ASDF %d\n", i);
-//        print_msgs(0);
-//
-//        redraw();
-//
-//        set_led(i & 1);
-//
-//        sleep_ms(1000);
-//        i++;
-//    }
+    while (true) {
+        clear();
+
+        sleep_ms(5000);
+        dht_read(&dr);
+        printf("%f %f\n", dr.temp_celsius, dr.humidity);
+
+        log_msg("%f %f\n", dr.temp_celsius, dr.humidity);
+        print_msgs(0);
+
+        redraw();
+
+        //set_led(i & 1);
+
+        sleep_ms(1000);
+        i++;
+    }
 
     return 0;
 }

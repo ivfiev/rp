@@ -18,6 +18,7 @@ add_executable(${NAME}
         graphics.cpp
         functions.h
         wifi.cpp
+        dht11.cpp
 )
 
 include(common/pimoroni_i2c)

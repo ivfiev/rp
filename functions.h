@@ -1,7 +1,7 @@
-#ifndef WIP_FUNCTIONS_H
-#define WIP_FUNCTIONS_H
-
-#endif //WIP_FUNCTIONS_H
+typedef struct {
+    float humidity;
+    float temp_celsius;
+} dht_reading;
 
 void log_msg(const char *format, ...);
 void print_msgs(uint offset);
@@ -12,3 +12,5 @@ void redraw();
 void set_led(int);
 
 void wifi_scan();
+
+void dht_read(dht_reading *);
