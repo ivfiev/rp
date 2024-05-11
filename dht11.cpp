@@ -7,6 +7,10 @@
 #define DHT_PIN 0
 #define MAX_TIMINGS 85
 
+void dht_init() {
+    gpio_init(DHT_PIN);
+}
+
 // https://www.electronicwings.com/sensors-modules/dht11
 void dht_read(dht_reading *result) {
     int data[5] = {0, 0, 0, 0, 0};
@@ -18,8 +22,8 @@ void dht_read(dht_reading *result) {
     gpio_set_dir(DHT_PIN, GPIO_OUT);
     gpio_put(DHT_PIN, 0);
     sleep_ms(20);
-    //gpio_put(DHT_PIN, 1);
-    //sleep_us(40);
+    gpio_put(DHT_PIN, 1);
+    sleep_us(40);
     gpio_set_dir(DHT_PIN, GPIO_IN);
 
     for (uint i = 0; i < MAX_TIMINGS; i++) {
@@ -55,6 +59,6 @@ void dht_read(dht_reading *result) {
             result->temp_celsius = -result->temp_celsius;
         }
     } else {
-        printf("Failed checksum %d\n", j);
+        printf("Failed checksum %d chk: %d\n", j, data[4]);
     }
 }

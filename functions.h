@@ -13,4 +13,5 @@ void set_led(int);
 
 void wifi_scan();
 
+void dht_init();
 void dht_read(dht_reading *);

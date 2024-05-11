@@ -12,6 +12,7 @@ int main() {
         printf("Wi-Fi init failed");
         return -1;
     }
+    dht_init();
 
     int i = 0;
 
@@ -22,9 +23,9 @@ int main() {
 
         sleep_ms(5000);
         dht_read(&dr);
-        printf("%f %f\n", dr.temp_celsius, dr.humidity);
+        //printf("%f.0 %f.0\n", dr.temp_celsius, dr.humidity);
 
-        log_msg("%f %f\n", dr.temp_celsius, dr.humidity);
+        log_msg("%.f Celsius\n%.f Humidity\n\n", dr.temp_celsius, dr.humidity);
         print_msgs(0);
 
         redraw();
