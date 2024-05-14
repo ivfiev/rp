@@ -17,8 +17,6 @@ void dht_read(dht_reading *result) {
     uint last = 1;
     uint j = 0;
 
-    set_led(1);
-
     gpio_set_dir(DHT_PIN, GPIO_OUT);
     gpio_put(DHT_PIN, 0);
     sleep_ms(20);
@@ -42,8 +40,6 @@ void dht_read(dht_reading *result) {
             j++;
         }
     }
-
-    set_led(0);
 
     // 40 bits + checksum
     if ((j >= 40) && (data[4] == ((data[0] + data[1] + data[2] + data[3]) & 0xFF))) {

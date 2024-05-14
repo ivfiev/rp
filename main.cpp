@@ -27,7 +27,10 @@ int main() {
         clear();
 
         sleep_ms(2000);
+
+        set_led(1);
         dht_read(&dr);
+        set_led(0);
 
         sprintf(celsius, "%.fC", dr.temp_celsius);
         sprintf(humidity, "%.f%%", dr.humidity);
