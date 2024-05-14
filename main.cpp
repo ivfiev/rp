@@ -2,7 +2,8 @@
 #include <pico/cyw43_arch.h>
 #include <pico_graphics.hpp>
 #include "pico_explorer.hpp"
-#include "functions.h"
+#include "states.hpp"
+#include "button.hpp"
 
 using namespace pimoroni;
 using namespace std;
@@ -17,34 +18,27 @@ int main() {
     }
     dht_init();
 
-    int i = 0;
-    char celsius[20];
-    char humidity[20];
+    auto a = Button(PicoExplorer::A);
+    auto b = Button(PicoExplorer::B);
 
-    dht_reading dr;
+    auto dht = DhtState();
+    auto log = LogState();
+    State *curr = &dht;
 
     while (true) {
         clear();
+        sleep_ms(1000);
 
-        sleep_ms(2000);
+        curr->Tick();
 
-        set_led(1);
-        dht_read(&dr);
-        set_led(0);
-
-        sprintf(celsius, "%.fC", dr.temp_celsius);
-        sprintf(humidity, "%.f%%", dr.humidity);
-
-        graphics.set_font(&hershey::futural);
-        graphics.text(celsius, Point(55, 85), 240);
-        graphics.text(humidity, Point(55, 155), 240);
-
-//        log_msg("%.f Celsius\n%.f Humidity\n\n", dr.temp_celsius, dr.humidity);
-//        print_msgs(0);
+        if (a.read()) {
+            curr = &dht;
+        } else if (b.read()) {
+            curr = &log;
+        }
 
         redraw();
         sleep_ms(1000);
-        i++;
     }
 
     return 0;

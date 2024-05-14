@@ -15,3 +15,6 @@ void wifi_scan();
 
 void dht_init();
 void dht_read(dht_reading *);
+
+class DhtState;
+class LogState;

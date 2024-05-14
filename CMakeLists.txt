@@ -19,6 +19,7 @@ add_executable(${NAME}
         functions.h
         wifi.cpp
         dht11.cpp
+        states.hpp
 )
 
 include(common/pimoroni_i2c)
@@ -26,11 +27,13 @@ include(common/pimoroni_bus)
 include(libraries/bitmap_fonts/bitmap_fonts)
 include(libraries/hershey_fonts/hershey_fonts)
 include(libraries/pico_explorer/pico_explorer)
+include(drivers/button/button)
 
 target_link_libraries(${NAME}
         pimoroni_i2c
         pico_explorer
         pico_cyw43_arch_none
+        button
 )
 
 pico_add_extra_outputs(${NAME})
